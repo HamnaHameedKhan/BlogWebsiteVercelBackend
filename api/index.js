@@ -4,10 +4,9 @@ const connectDB = require("../config/db");
 const cors = require("cors");
 require("dotenv").config();
 
-// Create express app
 const app = express();
 
-// Connect to database (ensure it runs once)
+// Connect to DB (do it once)
 connectDB();
 
 // Middleware
@@ -23,5 +22,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Serverless Backend Running 🚀" });
 });
 
-// Export for Vercel
-module.exports = app;
+// Wrap express app for Vercel
+const serverless = require("serverless-http");
+module.exports = serverless(app);
