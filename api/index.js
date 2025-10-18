@@ -14,8 +14,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/users", require("./blogRoute"));
-app.use("/api/blogs", require("./userRoute"));
+app.use("/users", require("./blogRoute"));
+app.use("/blogs", require("./userRoute"));
 
 // Default route
 app.get("/", (req, res) => {
